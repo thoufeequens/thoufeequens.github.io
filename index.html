@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thoufeeque N S</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    <style>
+    /* ---- reset ---- */
+    body{
+        margin:0;
+        font-family: 'Orbitron', sans-serif;
+        background-color: #000000;
+        color: #ffffff;
+        font-size: 20px;
+    }
+
+    img {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        margin-right: 20px;
+    }
+
+    /* ---- particles.js container ---- */
+    #particles-js{
+        position:absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #000000;
+        background-image: url("");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    /* ---- stats.js ---- */
+    .count-particles{
+        background: #000022;
+        position: absolute;
+        top: 48px;
+        left: 0;
+        width: 80px;
+        color: #13E8E9;
+        font-size: .8em;
+        text-align: left;
+        text-indent: 4px;
+        line-height: 14px;
+        padding-bottom: 2px;
+        font-family: Helvetica, Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    .js-count-particles{
+        font-size: 1.1em;
+    }
+
+    #stats, .count-particles{
+        -webkit-user-select: none;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    /* ---- content ---- */
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 20%;
+        transform: translateY(-50%);
+        text-align: left;
+        color: #ffffff;
+        z-index: 100; /* To bring the content in front of the particles */
+    }
+
+    .content h1, .content h2 {
+        animation: fadeIn 2s;
+    }
+
+    .content a {
+        color: #ffffff;
+        text-decoration: none;
+        margin-right: 10px;
+        transition: color .3s ease;
+    }
+
+    .content a:hover {
+        color: #13E8E9;
+    }
+
+    .social-icons {
+        position: absolute;
+        bottom: 40px;
+        left: 20%;
+        z-index: 100; /* To bring the social icons in front of the particles */
+    }
+
+    .skills {
+        margin-top: 50px;
+    }
+
+    .skills div {
+        display: inline-block;
+        border: 2px solid #ffffff;
+        padding: 10px 20px;
+        margin-right: 10px;
+        transition: all .3s ease;
+        cursor: pointer;
+    }
+
+    .skills div:hover {
+        transform: scale(1.1);
+        color: #13E8E9;
+        border-color: #13E8E9;
+    }
+
+    @keyframes fadeIn {
+        0% {opacity:0;}
+        100% {opacity:1;}
+    }
+    </style>
+</head>
+<body>
+
+    <!-- particles.js container -->
+    <div id="particles-js"></div>
+
+    <!-- content -->
+    <div class="content">
+        <img src="profile-pic.jpg" alt="Profile Picture">
+        <h1>Thoufeeque N S</h1>
+        <h2>Breaking things for fun and living</h2>
+
+        <div class="skills">
+            <div>Penetration Testing</div>
+            <div>RedTeam Assessment</div>
+            <div>AppSec Engineering</div>
+        </div>
+    </div>
+
+    <!-- social icons -->
+    <div class="social-icons">
+        <a href="https://www.gotoshell.io/"><i class="fas fa-blog"></i></a>
+        <a href="https://www.linkedin.com/in/thoufeequens/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/thoufeequens"><i class="fab fa-twitter"></i></a>
+        <a href="mailto:tfqsec@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- stats.js lib -->
+    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+
+    <!-- particles.js JavaScript settings -->
+    <script>
+    particlesJS("particles-js", {"particles":{"number":{"value":52,"density":{"enable":true,"value_area":1025.908125981517}},"color":{"value":"#00ed29"},"shape":{"type":"polygon","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":3},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":1,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":2,"random":false,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":2,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+    
+    var count_particles, stats, update;
+    stats = new Stats;
+    stats.setMode(0);
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+    document.body.appendChild(stats.domElement);
+    count_particles = document.querySelector('.js-count-particles');
+    update = function() {
+        stats.begin();
+        stats.end();
+        if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+            count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+        }
+        requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+    </script>
+</body>
+</html>

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thoufeeque N S - Offensive Security Practitioner & LLM Security Researcher.">
+    <meta name="author" content="Thoufeeque N S">
+    
+    <meta property="og:title" content="Thoufeeque N S (MisterT) - Security Researcher">
+    <meta property="og:image" content="profile-pic.jpg">
+    <meta property="og:description" content="Offensive Security Practitioner | AI Red Teamer | AppSec">
+
+    <link rel="icon" href="profile-pic.jpg" type="image/jpeg">
+
+    <title>Thoufeeque N S | MisterT</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ---- Reset & Variables ---- */
+        :root {
+            --primary-color: #13E8E9; /* Cyan */
+            --bg-color: #050505;
+            --text-color: #ffffff;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --timeline-line: rgba(255,255,255,0.2);
+            --terminal-bg: rgba(10, 10, 10, 0.95);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, nav a, .skill-tag, .blog-title {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { color: var(--primary-color); }
+
+        /* ---- Particles Background (Fixed) ---- */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-color: #000000;
+        }
+
+        /* ---- Navigation ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            color: var(--primary-color); 
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a {
+            margin-left: 30px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ---- Sections General ---- */
+        section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* ---- Hero Section ---- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 0; 
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(19, 232, 233, 0.4);
+        }
+
+        .hero h1 { font-size: 2.5rem; margin: 10px 0; }
+        
+        /* Typewriter CSS */
+        .hero h2 {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 30px;
+            font-weight: 400;
+            min-height: 1.5em; 
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: var(--primary-color);
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            border: 1px solid var(--primary-color);
+            padding: 8px 20px;
+            border-radius: 4px;
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            cursor: default;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .social-hero { margin-top: 40px; font-size: 1.5rem; }
+        .social-hero a { margin: 0 15px; }
+
+        /* ---- About Section ---- */
+        .about-content {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+            font-size: 1.1rem;
+        }
+        
+        .about-content strong { color: var(--primary-color); }
+        .about-content a { color: var(--primary-color); text-decoration: underline; }
+
+        /* ---- Blog Feed Section ---- */
+        .blog-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(19, 232, 233, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(19, 232, 233, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .blog-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+
+        .blog-link {
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: #fff;
+            align-self: flex-start;
+            border-bottom: 1px solid var(--primary-color);
+        }
+
+        /* ---- Experience Timeline ---- */
+        .timeline { position: relative; margin-top: 20px; }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 60px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--timeline-line);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -9px;
+            top: 5px; 
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 4px solid #000;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        .timeline-role { font-size: 1.4rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
+        .timeline-company { font-size: 1.1rem; font-style: italic; color: #ccc; margin-bottom: 15px; }
+        
+        .timeline-desc ul {
+            padding-left: 20px;
+            margin: 0;
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-desc li { margin-bottom: 8px; }
+
+        /* ---- Footer ---- */
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ---- CLI TERMINAL STYLES ---- */
+        .cli-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(19, 232, 233, 0.4);
+            z-index: 2000;
+            transition: all 0.3s ease;
+            color: #000;
+            font-size: 1.5rem;
+        }
+
+        .cli-toggle:hover {
+            transform: scale(1.1);
+            background: #fff;
+        }
+
+        .terminal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2001;
+            display: none; /* Hidden by default */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .terminal-overlay.active {
+            display: flex;
+        }
+
+        .terminal-window {
+            width: 80%;
+            max-width: 800px;
+            height: 60%;
+            background: #0d1117;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            font-family: 'Fira Code', monospace;
+            overflow: hidden;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .terminal-header {
+            background: #161b22;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+            margin-right: 20px;
+        }
+
+        .control { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; }
+        .close { background: #ff5f56; }
+        .minimize { background: #ffbd2e; }
+        .maximize { background: #27c93f; }
+
+        .terminal-title {
+            color: #8b949e;
+            font-size: 0.9rem;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .terminal-body {
+            flex-grow: 1;
+            padding: 20px;
+            color: #c9d1d9;
+            font-size: 1rem;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .output-line { margin-bottom: 5px; line-height: 1.4; }
+        .command-success { color: var(--primary-color); }
+        .command-error { color: #ff5f56; }
+        .prompt-text { color: #27c93f; font-weight: bold; margin-right: 10px; }
+        .path-text { color: #79c0ff; font-weight: bold; }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+        }
+
+        .cmd-input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-family: 'Fira Code', monospace;
+            font-size: 1rem;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        /* ---- Mobile Responsive ---- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            nav { justify-content: center; }
+            .hero h1 { font-size: 1.8rem; } 
+            section { padding: 60px 20px; }
+            .timeline-item { padding-left: 30px; }
+            .blog-card { max-width: 100%; }
+            .terminal-window { width: 95%; height: 50%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">Thoufeeque N S (MisterT)</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#blog-feed">Blog</a>
+            <a href="#experience">Experience</a>
+            <a href="mailto:tfqsec@gmail.com">Contact</a>
+        </div>
+    </nav>
+
+    <div class="cli-toggle" onclick="toggleTerminal()" title="Open Terminal (Press ~)">
+        <i class="fas fa-terminal"></i>
+    </div>
+
+    <div id="terminal-overlay" class="terminal-overlay">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="window-controls">
+                    <div class="control close" onclick="toggleTerminal()"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+                <div class="terminal-title">visitor@mistert.pro:~</div>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <div class="output-line">Welcome to MisterT v1.0.0</div>
+                <div class="output-line">Type <span class="command-success">'help'</span> to see available commands.</div>
+                <br>
+                <div class="input-line">
+                    <span class="prompt-text">visitor@mistert.pro:</span><span class="path-text">~</span>$ 
+                    <input type="text" id="cmd-input" class="cmd-input" autocomplete="off" spellcheck="false">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="home" class="hero">
+        <img src="profile-pic.jpg" alt="Thoufeeque N S" class="profile-img">
+        <h1>Thoufeeque N S</h1>
+        
+        <h2><span id="typewriter"></span><span class="cursor"></span></h2>
+
+        <div class="skills-container">
+            <div class="skill-tag">Offensive Security</div>
+            <div class="skill-tag">Penetration Testing</div>
+            <div class="skill-tag">AI/LLM Security</div>
+            <div class="skill-tag">Attack Surface Management</div>
+            <div class="skill-tag">AppSec Engineering</div>
+        </div>
+
+        <div class="social-hero">
+            <a href="https://mistert.pro" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
+            <a href="https://www.linkedin.com/in/thoufeequens/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/thoufeequens" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="mailto:tfqsec@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <p>
+                I am an <strong>Offensive Security Practitioner</strong> with over 10 years of experience in the security domain. My career has been defined by a passion for breaking complex systems to make them stronger. I specialize in <strong>Application Pentesting, API Security, External Attack Surface Management, and Red Teaming</strong>.
+            </p>
+            <br>
+            <p>
+                Currently, I focus on <strong>automating security</strong> in multiple stages and <strong>LLM Security</strong>—ranging from architecture-level design reviews to <strong>AI Red Teaming</strong> to identify vulnerabilities in large language models.
+            </p>
+            <br>
+            <p>
+                I am also a strong advocate for community knowledge sharing. I have spoken at conferences like <strong>BSides Delhi</strong>, <strong>DEFCON Trivandrum</strong>, and <strong>c0c0n Pre-con</strong> on topics such as Radio Hacking and Automating Pentesting. I was also part of the organizing team for multiple security chapters and villages.
+            </p>
+            <br>
+            <p>
+                I document my research, security findings, and tutorials on my blog: <a href="https://mistert.pro" target="_blank">mistert.pro</a>.
+            </p>
+        </div>
+    </section>
+
+    <section id="blog-feed">
+        <h2 class="section-title">Latest Blogs</h2>
+        <div id="blog-container" class="blog-container">
+            <p>Loading latest articles...</p>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://mistert.pro" target="_blank" style="border: 1px solid var(--primary-color); padding: 10px 20px; border-radius: 5px;">View All Posts</a>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-role">Security Engineer</div>
+                <div class="timeline-company">Advance Auto Parts</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Lead penetration tester for the InfoSec team, conducting assessments on high-risk apps, APIs, and infrastructure.</li>
+                        <li>Owned the External Attack Surface Management (EASM) platform, optimizing asset discovery and reducing unknown assets.</li>
+                        <li>Owned the Risk Acceptance Request (RAR) governance process and contributed to enterprise-wide Risk Register Consolidation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-role">Senior Information Security Analyst</div>
+                <div class="timeline-company">Agility</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Performed web, API, network, and infrastructure pentesting for internal and internet-facing systems.</li>
+                        <li>Led the evaluation and implementation of BurpSuite Enterprise and Tenable SC.</li>
+                        <li>Owned vulnerability management across internal and external infrastructure, defining processes for the VA lifecycle.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-role">Senior Security Engineer</div>
+                <div class="timeline-company">IBS Software</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Conducted penetration tests for enterprise-grade products in the Travel & Logistics domain.</li>
+                        <li>Worked with product teams to drive secure development and delivered internal pentest training.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-role">Security Analyst</div>
+                <div class="timeline-company">EY</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Performed security reviews and extensive web application pentesting for global EY applications.</li>
+                        <li>Developed PoCs to demonstrate exploitability and enabled teams to run automated scans using Webinspect.</li>
+                        <li>Delivered secure-coding training globally.</li>
+                    </ul>
+                </div>
+            </div>
+
+             <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-role">Independent Consultant</div>
+                <div class="timeline-company">Freelance</div>
+                <div class="timeline-desc">
+                    <ul>
+                        <li>Conducted web and network penetration testing for multiple clients using OWASP standards.</li>
+                        <li>Delivered ethical hacking and web application security training at multiple institutes.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Thoufeeque N S. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        /* Particles Config */
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 50, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#13E8E9" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": { "enable": true, "distance": 150, "color": "#13E8E9", "opacity": 0.2, "width": 1 },
+                "move": { "enable": true, "speed": 2 }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } }
+                }
+            },
+            "retina_detect": true
+        });
+
+        /* Typewriter Effect */
+        const typeText = "I break it before they do."; 
+        const typeSpeed = 100; 
+        let typeIndex = 0;
+
+        function typeWriter() {
+            if (typeIndex < typeText.length) {
+                document.getElementById("typewriter").innerHTML += typeText.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, typeSpeed);
+            }
+        }
+
+        /* Blog Fetcher Script */
+        document.addEventListener('DOMContentLoaded', function() {
+            typeWriter(); // Start Typewriter
+
+            // Blog Fetch
+            const rssUrl = 'https://mistert.pro/rss'; 
+            const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+            const container = document.getElementById('blog-container');
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok') {
+                        container.innerHTML = ''; 
+                        const posts = data.items.slice(0, 3);
+                        posts.forEach(post => {
+                            const card = document.createElement('div');
+                            card.className = 'blog-card';
+                            const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                                year: 'numeric', month: 'long', day: 'numeric'
+                            });
+                            card.innerHTML = `
+                                <div>
+                                    <h4 class="blog-title">${post.title}</h4>
+                                    <div class="blog-date">${date}</div>
+                                </div>
+                                <a href="${post.link}" target="_blank" class="blog-link">Read Article &rarr;</a>
+                            `;
+                            container.appendChild(card);
+                        });
+                    } else {
+                        container.innerHTML = '<p>Could not load blog posts at this time.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching blog:', error);
+                    container.innerHTML = '<p>Check out my blog at <a href="https://mistert.pro" style="color:#13E8E9">mistert.pro</a></p>';
+                });
+        });
+
+        /* ---- TERMINAL LOGIC ---- */
+        const terminalOverlay = document.getElementById('terminal-overlay');
+        const cmdInput = document.getElementById('cmd-input');
+        const terminalBody = document.getElementById('terminal-body');
+
+        // Toggle visibility
+        function toggleTerminal() {
+            const isActive = terminalOverlay.classList.contains('active');
+            if (isActive) {
+                terminalOverlay.classList.remove('active');
+            } else {
+                terminalOverlay.classList.add('active');
+                cmdInput.focus();
+            }
+        }
+
+        // Hotkey Listener (~)
+        document.addEventListener('keydown', function(e) {
+            // Check for Backtick/Tilde key (Keycode 192 usually)
+            if (e.key === '`' || e.key === '~') {
+                e.preventDefault(); // Prevent typing `
+                toggleTerminal();
+            }
+            // Close on Escape
+            if (e.key === 'Escape' && terminalOverlay.classList.contains('active')) {
+                toggleTerminal();
+            }
+        });
+
+        // Command Handler
+        cmdInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = cmdInput.value.trim();
+                if (command) {
+                    // Create Input Line in History
+                    const historyLine = document.createElement('div');
+                    historyLine.className = 'output-line';
+                    historyLine.innerHTML = `<span class="prompt-text">visitor@mistert.pro:</span><span class="path-text">~</span>$ ${command}`;
+                    // Insert before the input line
+                    terminalBody.insertBefore(historyLine, cmdInput.parentElement);
+                    
+                    // Process Command
+                    processCommand(command);
+                    
+                    // Clear Input & Scroll
+                    cmdInput.value = '';
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }
+            }
+        });
+
+        function processCommand(cmd) {
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'output-line';
+            
+            const lowerCmd = cmd.toLowerCase();
+
+            switch(lowerCmd) {
+                case 'help':
+                    responseDiv.innerHTML = `
+                        Available commands:<br>
+                        <span class="command-success">whoami</span>  - Display user info<br>
+                        <span class="command-success">contact</span> - Show contact details<br>
+                        <span class="command-success">clear</span>   - Clear terminal<br>
+                        <span class="command-success">ls</span>      - List files<br>
+                        <span class="command-success">exit</span>    - Close terminal
+                    `;
+                    break;
+                case 'whoami':
+                    responseDiv.innerHTML = "Thoufeeque N S (MisterT) - Offensive Security Practitioner";
+                    break;
+                case 'contact':
+                    responseDiv.innerHTML = "Email: tfqsec@gmail.com<br>Blog: mistert.pro<br>Twitter: @thoufeequens";
+                    break;
+                case 'ls':
+                    responseDiv.innerHTML = "index.html  robots.txt  <span class='command-error'>secret.txt</span>";
+                    break;
+                case 'cat secret.txt':
+                    responseDiv.innerHTML = "Nice try! But the flag is in another castle 🚩";
+                    break;
+                case 'sudo':
+                    responseDiv.innerHTML = "visitor is not in the sudoers file. This incident will be reported.";
+                    break;
+                case 'exit':
+                    toggleTerminal();
+                    return; // Don't append response
+                case 'clear':
+                    // Remove all previous siblings of input-line
+                    let element = terminalBody.firstElementChild;
+                    while (element && element !== cmdInput.parentElement) {
+                        let next = element.nextElementSibling;
+                        terminalBody.removeChild(element);
+                        element = next;
+                    }
+                    return;
+                default:
+                    responseDiv.innerHTML = `Command not found: ${cmd}. Type 'help' for options.`;
+                    responseDiv.classList.add('command-error');
+            }
+
+            terminalBody.insertBefore(responseDiv, cmdInput.parentElement);
+        }
+
+        // Keep focus on click
+        terminalBody.addEventListener('click', function() {
+            cmdInput.focus();
+        });
+
+    </script>
+</body>
+</html>

@@ -406,15 +406,32 @@
             outline: none;
         }
 
-        /* ---- Mobile Responsive ---- */
+        /* ---- Mobile Responsive (FIXED) ---- */
         @media (max-width: 768px) {
             .nav-links { display: none; } 
-            nav { justify-content: center; }
+            
+            nav { 
+                justify-content: center; 
+                padding: 15px;
+            }
+
+            /* FIX: Target .hero specifically to override desktop padding */
+            .hero {
+                padding-top: 140px; /* Pushes the profile image down below the nav */
+                justify-content: flex-start; /* Aligns content from top instead of center */
+                height: auto; /* Allows section to grow */
+                min-height: 100vh; /* Ensures it still covers screen */
+            }
+
             .hero h1 { font-size: 1.8rem; } 
+            
             section { padding: 60px 20px; }
             .timeline-item { padding-left: 30px; }
             .blog-card { max-width: 100%; }
             .terminal-window { width: 95%; height: 50%; }
+            
+            /* Adjust terminal button for mobile */
+            .cli-toggle { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.2rem; }
         }
     </style>
 </head>

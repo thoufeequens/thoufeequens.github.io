@@ -30,6 +30,10 @@
 
         * { box-sizing: border-box; }
 
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
         body {
             margin: 0;
             font-family: 'Roboto', sans-serif;
@@ -156,20 +160,24 @@
             margin-top: 20px;
         }
 
+        /* Updated Skill Tag to look like button but act as link */
         .skill-tag {
             border: 1px solid var(--primary-color);
             padding: 8px 20px;
             border-radius: 4px;
             color: var(--primary-color);
             font-size: 0.8rem;
-            cursor: default;
+            cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .skill-tag:hover {
             background: var(--primary-color);
             color: #000;
             box-shadow: 0 0 15px var(--primary-color);
+            transform: translateY(-2px);
         }
 
         .social-hero { margin-top: 40px; font-size: 1.5rem; }
@@ -186,6 +194,40 @@
         
         .about-content strong { color: var(--primary-color); }
         .about-content a { color: var(--primary-color); text-decoration: underline; }
+
+        /* ---- Expertise Section (NEW) ---- */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .expertise-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .expertise-card:hover, .expertise-card.active {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 20px rgba(19, 232, 233, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .expertise-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .expertise-card ul {
+            padding-left: 20px;
+            color: #ccc;
+        }
+        
+        .expertise-card li { margin-bottom: 8px; }
 
         /* ---- Blog Feed Section ---- */
         .blog-container {
@@ -444,6 +486,7 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#expertise">Expertise</a>
             <a href="#blog-feed">Blog</a>
             <a href="#experience">Experience</a>
             <a href="mailto:tfqsec@gmail.com">Contact</a>
@@ -483,11 +526,11 @@
         <h2><span id="typewriter"></span><span class="cursor"></span></h2>
 
         <div class="skills-container">
-            <div class="skill-tag">Offensive Security</div>
-            <div class="skill-tag">Penetration Testing</div>
-            <div class="skill-tag">AI/LLM Security</div>
-            <div class="skill-tag">Attack Surface Management</div>
-            <div class="skill-tag">AppSec Engineering</div>
+            <a href="#skill-offsec" class="skill-tag">Offensive Security</a>
+            <a href="#skill-pentest" class="skill-tag">Penetration Testing</a>
+            <a href="#skill-ai" class="skill-tag">AI/LLM Security</a>
+            <a href="#skill-easm" class="skill-tag">Attack Surface Management</a>
+            <a href="#skill-appsec" class="skill-tag">AppSec Engineering</a>
         </div>
 
         <div class="social-hero">
@@ -516,6 +559,63 @@
             <p>
                 I document my research, security findings, and tutorials on my blog: <a href="https://mistert.pro" target="_blank">mistert.pro</a>.
             </p>
+        </div>
+    </section>
+
+    <section id="expertise">
+        <h2 class="section-title">Key Expertise</h2>
+        <div class="expertise-grid">
+            
+            <div id="skill-offsec" class="expertise-card">
+                <h3>Offensive Security</h3>
+                <ul>
+                    <li>Red Team Operations & Adversary Emulation</li>
+                    <li>Security Awareness Training & Phishing Sims</li>
+                    <li>Physical Security & Social Engineering</li>
+                    <li>Radio Hacking & SDR</li>
+                </ul>
+            </div>
+
+            <div id="skill-pentest" class="expertise-card">
+                <h3>Penetration Testing</h3>
+                <ul>
+                    <li>Web Application Security (OWASP Top 10)</li>
+                    <li>API Security & Microservices Assessment</li>
+                    <li>Network Infrastructure (Internal/External)</li>
+                    <li>Thick Client & Mobile App (Basic)</li>
+                </ul>
+            </div>
+
+            <div id="skill-ai" class="expertise-card">
+                <h3>AI/LLM Security</h3>
+                <ul>
+                    <li>Prompt Injection & Jailbreak Testing</li>
+                    <li>LLM Red Teaming & Model Abuse</li>
+                    <li>Architectural Design Review for AI Apps</li>
+                    <li>Securing RAG Pipelines</li>
+                </ul>
+            </div>
+
+            <div id="skill-easm" class="expertise-card">
+                <h3>Attack Surface Management</h3>
+                <ul>
+                    <li>Unknown Asset Discovery & Attribution</li>
+                    <li>Vulnerability Prioritization</li>
+                    <li>Cloud Exposure Analysis (AWS/Azure)</li>
+                    <li>Shadow IT Reduction</li>
+                </ul>
+            </div>
+
+            <div id="skill-appsec" class="expertise-card">
+                <h3>AppSec Engineering</h3>
+                <ul>
+                    <li>DevSecOps & CI/CD Pipeline Hardening</li>
+                    <li>SAST/DAST Automation</li>
+                    <li>Secure Code Review & Threat Modeling</li>
+                    <li>Vulnerability Management Governance</li>
+                </ul>
+            </div>
+
         </div>
     </section>
 

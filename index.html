@@ -31,7 +31,7 @@
         * { box-sizing: border-box; }
 
         html {
-            scroll-behavior: smooth; /* Enables smooth scrolling */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -129,7 +129,6 @@
 
         .hero h1 { font-size: 2.5rem; margin: 10px 0; }
         
-        /* Typewriter CSS */
         .hero h2 {
             font-size: 1.1rem;
             color: #ccc;
@@ -160,7 +159,6 @@
             margin-top: 20px;
         }
 
-        /* Updated Skill Tag to look like button but act as link */
         .skill-tag {
             border: 1px solid var(--primary-color);
             padding: 8px 20px;
@@ -195,7 +193,7 @@
         .about-content strong { color: var(--primary-color); }
         .about-content a { color: var(--primary-color); text-decoration: underline; }
 
-        /* ---- Expertise Section (NEW) ---- */
+        /* ---- Expertise Section ---- */
         .expertise-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -457,12 +455,11 @@
                 padding: 15px;
             }
 
-            /* FIX: Target .hero specifically to override desktop padding */
             .hero {
-                padding-top: 140px; /* Pushes the profile image down below the nav */
-                justify-content: flex-start; /* Aligns content from top instead of center */
-                height: auto; /* Allows section to grow */
-                min-height: 100vh; /* Ensures it still covers screen */
+                padding-top: 140px; 
+                justify-content: flex-start;
+                height: auto;
+                min-height: 100vh;
             }
 
             .hero h1 { font-size: 1.8rem; } 
@@ -471,8 +468,6 @@
             .timeline-item { padding-left: 30px; }
             .blog-card { max-width: 100%; }
             .terminal-window { width: 95%; height: 50%; }
-            
-            /* Adjust terminal button for mobile */
             .cli-toggle { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 1.2rem; }
         }
     </style>
@@ -569,7 +564,7 @@
             <div id="skill-offsec" class="expertise-card">
                 <h3>Offensive Security</h3>
                 <ul>
-                    <li>Red Team Operations & Adversary Simulation</li>
+                    <li>Red Team Operations & Adversary Emulation</li>
                     <li>Security Awareness Training & Phishing Sims</li>
                     <li>Physical Security & Social Engineering</li>
                     <li>Radio Hacking & SDR</li>
@@ -582,7 +577,7 @@
                     <li>Web Application Security (OWASP Top 10)</li>
                     <li>API Security & Microservices Assessment</li>
                     <li>Network Infrastructure (Internal/External)</li>
-                    <li>Thick Client & Mobile App</li>
+                    <li>Thick Client & Mobile App (Basic)</li>
                 </ul>
             </div>
 
@@ -601,7 +596,7 @@
                 <ul>
                     <li>Unknown Asset Discovery & Attribution</li>
                     <li>Vulnerability Prioritization</li>
-                    <li>Cloud Exposure Analysis</li>
+                    <li>Cloud Exposure Analysis (AWS/Azure)</li>
                     <li>Shadow IT Reduction</li>
                 </ul>
             </div>
@@ -620,7 +615,7 @@
     </section>
 
     <section id="blog-feed">
-        <h2 class="section-title">Latest Blog Posts</h2>
+        <h2 class="section-title">Latest Blogs</h2>
         <div id="blog-container" class="blog-container">
             <p>Loading latest articles...</p>
         </div>
@@ -782,12 +777,11 @@
                 });
         });
 
-        /* ---- TERMINAL LOGIC ---- */
+        /* ---- TERMINAL LOGIC (FIXED) ---- */
         const terminalOverlay = document.getElementById('terminal-overlay');
         const cmdInput = document.getElementById('cmd-input');
         const terminalBody = document.getElementById('terminal-body');
 
-        // Toggle visibility
         function toggleTerminal() {
             const isActive = terminalOverlay.classList.contains('active');
             if (isActive) {
@@ -798,35 +792,42 @@
             }
         }
 
-        // Hotkey Listener (~)
         document.addEventListener('keydown', function(e) {
-            // Check for Backtick/Tilde key (Keycode 192 usually)
             if (e.key === '`' || e.key === '~') {
-                e.preventDefault(); // Prevent typing `
+                e.preventDefault();
                 toggleTerminal();
             }
-            // Close on Escape
             if (e.key === 'Escape' && terminalOverlay.classList.contains('active')) {
                 toggleTerminal();
             }
         });
 
-        // Command Handler
         cmdInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
                 const command = cmdInput.value.trim();
                 if (command) {
-                    // Create Input Line in History
+                    // Create History Line (SECURE)
                     const historyLine = document.createElement('div');
                     historyLine.className = 'output-line';
-                    historyLine.innerHTML = `<span class="prompt-text">visitor@mistert.pro:</span><span class="path-text">~</span>$ ${command}`;
-                    // Insert before the input line
+                    
+                    const promptSpan = document.createElement('span');
+                    promptSpan.className = 'prompt-text';
+                    promptSpan.textContent = 'visitor@mistert.pro:';
+
+                    const pathSpan = document.createElement('span');
+                    pathSpan.className = 'path-text';
+                    pathSpan.textContent = '~';
+
+                    const commandText = document.createTextNode(`$ ${command}`);
+
+                    historyLine.appendChild(promptSpan);
+                    historyLine.appendChild(pathSpan);
+                    historyLine.appendChild(commandText);
+
                     terminalBody.insertBefore(historyLine, cmdInput.parentElement);
                     
-                    // Process Command
                     processCommand(command);
                     
-                    // Clear Input & Scroll
                     cmdInput.value = '';
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
@@ -851,7 +852,7 @@
                     `;
                     break;
                 case 'whoami':
-                    responseDiv.innerHTML = "Thoufeeque N S (MisterT) - Offensive Security Practitioner";
+                    responseDiv.textContent = "Thoufeeque N S (MisterT) - Offensive Security Practitioner";
                     break;
                 case 'contact':
                     responseDiv.innerHTML = "Email: tfqsec@gmail.com<br>Blog: mistert.pro<br>Twitter: @thoufeequens";
@@ -860,16 +861,15 @@
                     responseDiv.innerHTML = "index.html  robots.txt  <span class='command-error'>secret.txt</span>";
                     break;
                 case 'cat secret.txt':
-                    responseDiv.innerHTML = "Nice try! But the flag is in another castle 🚩";
+                    responseDiv.textContent = "Nice try! But the flag is in another castle 🚩";
                     break;
                 case 'sudo':
-                    responseDiv.innerHTML = "visitor is not in the sudoers file. This incident will be reported.";
+                    responseDiv.textContent = "visitor is not in the sudoers file. This incident will be reported.";
                     break;
                 case 'exit':
                     toggleTerminal();
-                    return; // Don't append response
+                    return; 
                 case 'clear':
-                    // Remove all previous siblings of input-line
                     let element = terminalBody.firstElementChild;
                     while (element && element !== cmdInput.parentElement) {
                         let next = element.nextElementSibling;
@@ -878,14 +878,13 @@
                     }
                     return;
                 default:
-                    responseDiv.innerHTML = `Command not found: ${cmd}. Type 'help' for options.`;
+                    responseDiv.textContent = `Command not found: ${cmd}. Type 'help' for options.`;
                     responseDiv.classList.add('command-error');
             }
 
             terminalBody.insertBefore(responseDiv, cmdInput.parentElement);
         }
 
-        // Keep focus on click
         terminalBody.addEventListener('click', function() {
             cmdInput.focus();
         });
